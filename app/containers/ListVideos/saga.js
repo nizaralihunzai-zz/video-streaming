@@ -4,29 +4,11 @@ import { setDataAction } from './actions';
 import { getDataApi} from './api';
 
 export function* getData() {
-  try {
-    console.log('hello ')
-    
-    const url = "https://video.skincoachapp.com/v1/_debug/";
-    
-    const request = new Request(url, {
-        method: 'GET',
-        credentials: 'include',
-        cache: 'no-cache',
-        mode:'no-cors'
-      });
-      
-      fetch(request)
-      .then(function(response) {
-       console.log(response);
-      });
-      
-    // const response = yield call(getDataApi);
-    // console.log(response);
-    // process.exit(); 
-    // if (response) {
-    //   yield put(setDataAction(response));
-    // }
+  try {  
+    const response = yield call(getDataApi);
+    if (response) {
+      yield put(setDataAction(response));
+    }
   } catch (error) {
     console.error(error)
   }

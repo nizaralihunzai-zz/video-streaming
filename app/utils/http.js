@@ -6,7 +6,4 @@ const http = axios.create({
   timeout: 30000,
 });
 
-// http.headers['Access-Control-Allow-Origin'] = '*';
-
-
 export default http;
