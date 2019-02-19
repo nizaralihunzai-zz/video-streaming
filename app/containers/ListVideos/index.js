@@ -1,6 +1,6 @@
 /**
  *
- * ListVedios
+ * ListVideos
  *
  */
 
@@ -14,7 +14,6 @@ import { compose } from 'redux';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
-import makeSelectlistVedios from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
@@ -22,7 +21,7 @@ import { Alert, Button } from 'reactstrap';
 import matchSorter from 'match-sorter'
 
 import { getDataAction } from "./actions";
-import makeSelectListVedios from "./selectors";
+import makeSelectListVideos from "./selectors";
 
 // Import React Table
 import ReactTable from "react-table";
@@ -31,7 +30,7 @@ import "react-table/react-table.css";
 
 
 /* eslint-disable react/prefer-stateless-function */
-export class ListVedios extends React.Component {
+export class ListVideos extends React.Component {
 
   constructor(props) {
     super(props);
@@ -45,10 +44,10 @@ export class ListVedios extends React.Component {
   }
 
   renderTable = () => {
-    const { vedios_list } = this.props.listVedios;
-    // console.log(vedios_list);
+    const { videos_list } = this.props.listVideos;
+    // console.log(videos_list);
     return <ReactTable
-      data={vedios_list}
+      data={videos_list}
       filterable
       columns={[
      
@@ -110,12 +109,12 @@ export class ListVedios extends React.Component {
   }
 }
 
-ListVedios.propTypes = {
+ListVideos.propTypes = {
   dispatch: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
-  listVedios: makeSelectListVedios(),
+  listVideos: makeSelectListVideos(),
 });
 
 function mapDispatchToProps(dispatch) {
@@ -130,11 +129,11 @@ const withConnect = connect(
   mapDispatchToProps,
 );
 
-const withReducer = injectReducer({ key: 'listVedios', reducer });
-const withSaga = injectSaga({ key: 'listVedios', saga });
+const withReducer = injectReducer({ key: 'listVideos', reducer });
+const withSaga = injectSaga({ key: 'listVideos', saga });
 
 export default compose(
   withReducer,
   withSaga,
   withConnect,
-)(ListVedios);
+)(ListVideos);

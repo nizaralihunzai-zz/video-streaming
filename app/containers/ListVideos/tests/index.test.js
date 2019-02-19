@@ -2,9 +2,9 @@
 // import { mount } from 'enzyme';
 // import { enzymeFind } from 'styled-components/test-utils';
 
-// import { ListVedios } from '../index';
+// import { ListVideos } from '../index';
 
-describe('<ListVedios />', () => {
+describe('<ListVideos />', () => {
   it('Expect to have unit tests specified', () => {
     expect(true).toEqual(false);
   });

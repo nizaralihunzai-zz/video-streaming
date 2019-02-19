@@ -1,6 +1,6 @@
 /**
  *
- * Asynchronously loads the component for ListVedios
+ * Asynchronously loads the component for ListVideos
  *
  */
 

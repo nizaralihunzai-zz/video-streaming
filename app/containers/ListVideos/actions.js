@@ -1,6 +1,6 @@
 /*
  *
- * ListVedios actions
+ * ListVideos actions
  *
  */
 
