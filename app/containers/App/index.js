@@ -11,6 +11,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import ListVideos from 'containers/ListVideos/Loadable';
+import VideoDetail from 'containers/VideoDetail/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 
 import GlobalStyle from '../../global-styles';
@@ -20,6 +21,7 @@ export default function App() {
     <div>
       <Switch>
         <Route exact path="/" component={ListVideos} />
+        <Route path="/video-detail" component={VideoDetail} />
         <Route component={NotFoundPage} />
       </Switch>
       <GlobalStyle />

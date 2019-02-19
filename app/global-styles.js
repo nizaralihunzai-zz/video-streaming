@@ -19,7 +19,7 @@ const GlobalStyle = createGlobalStyle`
     background-color: #fafafa;
     min-height: 100%;
     min-width: 100%;
-    padding: 40px;
+    padding: 30px;
   }
 
   p,
@@ -27,6 +27,18 @@ const GlobalStyle = createGlobalStyle`
     font-family: Georgia, Times, 'Times New Roman', serif;
     line-height: 1.5em;
   }
+
+  .player-wrapper {
+    position: relative;
+    padding-top: 56.25%; /* 720 / 1280 = 0.5625 */
+  }
+  
+  .react-player {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
 `;
 
 export default GlobalStyle;

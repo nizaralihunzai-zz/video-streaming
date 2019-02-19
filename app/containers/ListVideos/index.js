@@ -55,10 +55,17 @@ export class ListVideos extends React.Component {
         {
           columns: [
             {
-              Header: "Thumb Url",
+              Header: "Thumbnail",
               Cell: row => (
                   <img src={row.original.thumbUrl} style={{width:'40px', height:'40px'}} />
               )
+            },
+            {
+              Header: "Category",
+              accessor: "category",
+              filterMethod: (filter, rows) =>
+                    matchSorter(rows, filter.value, { keys: ["category"] }),
+                  filterAll: true
             },
             {
               Header: "Title",
@@ -75,11 +82,21 @@ export class ListVideos extends React.Component {
                   filterAll: true
             },
             {
-              Header: "Running Time",
+              Header: "Play",
               Cell: row => (
                   <div>
-                    {console.log(row.original.videoUrl)}
-                      <Link to="/video-detail"  params={{ testvalue: row.original.videoUrl }} >Play</Link>
+                      <Link to={{
+                        pathname:"/video-detail", 
+                        state: {
+                          url: row.original.videoUrl,
+                          title: row.original.title,
+                          description: row.original.description,
+                        }
+                      }}
+
+                       >
+                        Play
+                      </Link>
                   </div>
               )
             },
