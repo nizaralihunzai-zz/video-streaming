@@ -6,6 +6,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
@@ -54,29 +55,33 @@ export class ListVideos extends React.Component {
         {
           columns: [
             {
-              Header: "Date",
-              accessor: "date",
+              Header: "Thumb Url",
+              Cell: row => (
+                  <img src={row.original.thumbUrl} style={{width:'40px', height:'40px'}} />
+              )
+            },
+            {
+              Header: "Title",
+              accessor: "title",
               filterMethod: (filter, rows) =>
-                    matchSorter(rows, filter.value, { keys: ["date"] }),
+                    matchSorter(rows, filter.value, { keys: ["title"] }),
                   filterAll: true
             },
-            
             {
-              Header: "USD/CAD",
-              accessor: "rates.CAD",
-            },
-            
-            {
-              Header: "USD/AUD",
-              accessor: "rates.AUD",
+              Header: "Running Time",
+              accessor: "runningTime",
+              filterMethod: (filter, rows) =>
+                    matchSorter(rows, filter.value, { keys: ["runningTime"] }),
+                  filterAll: true
             },
             {
-              Header: "USD/EUR",
-              accessor: "rates.EUR",
-            },
-            {
-              Header: "USD/GBP",
-              accessor: "rates.GBP",
+              Header: "Running Time",
+              Cell: row => (
+                  <div>
+                    {console.log(row.original.videoUrl)}
+                      <Link to="/video-detail"  params={{ testvalue: row.original.videoUrl }} >Play</Link>
+                  </div>
+              )
             },
 
           ]
@@ -92,18 +97,7 @@ export class ListVideos extends React.Component {
   render() {
     return (
       <div>
-        <Alert color="secondary">
-          <span>
-            Last updated at: {(this.props.recent_data && this.props.recent_data.date) ? this.props.recent_data.date : this.state.current_date}
-          </span>
-          <span style={{position:'absolute', right:'40px'}}>
-          Current USD/CAD rate is {(this.props.recent_data && this.props.recent_data.rates)? this.props.recent_data.rates.CAD : '' }
-          </span>
-        </Alert>
-        <Button color="primary" onClick={this.handleRefresh} >Refresh</Button>
-
         {this.renderTable()}
-
       </div>
     );
   }

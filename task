@@ -1,0 +1,70 @@
+
+Programming Task: Video Content Platform for Web
+
+
+For one of our recent apps, we built a content platform for delivering video content using Amazon 
+Cloudfront, S3 and HTTP Live Streaming. 
+We would like you to build a video library on the web using React. 
+You will have access to our static API where we serve the endpoints and provide the master playlists 
+for HTTP Live Streaming.
+
+
+Using a list and detail approach, we’d like you to use your creativity to design and develop the video 
+library using the information available from this endpoint:  https://video.skincoachapp.com/v1/_debug/
+
+
+Application Requirements:
+
+
+Video Library List
+
+- No videos with `active` set to `false` should be shown.
+
+- The list must be searchable (or filtered in-place) by simple plain text entry and match 
+    text at minimum in the video `title`.
+
+- Videos in the list must at minimum display the thumbnail, title and running time. 
+    But feel free to be creative.
+
+- OPTIONAL: Videos that are not `browseable` should only be shown in the list when searching.
+
+- OPTIONAL: Videos should be organized into categories based on their `category` key.
+
+- OPTIONAL: Search should include the description and tags.
+
+
+Video Detail
+
+- The detail page for a video should show the video’s title and description.
+
+- A video player should be included to play the video. `react-hls` or `react-player` 
+    (or any working HLS implementation of your choice)
+
+
+Design
+
+- The user experience does not need to be an impressive visual one, but we should be able to navigate 
+    the application effectively.
+
+
+Other important information:
+
+- Properties in the JSON beginning with `base` may be disregarded.
+
+- Videos are supposed to be in Spanish. Sorry! :)
+
+
+Things we love to see:
+
+- Commit history
+
+- Tests
+
+- README with instructions on how to run the application and explain any relevant design considerations.
+
+
+The data you are using is real production data and the videos are real as well. 
+As such, this task represents something you might actually work on in our team. 
+Please push your repo up to GitHub and send the link over before the deadline above.
+
+

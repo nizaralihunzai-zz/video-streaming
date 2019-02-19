@@ -10,7 +10,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import ListVedios from 'containers/ListVedios/Loadable';
+import ListVideos from 'containers/ListVideos/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 
 import GlobalStyle from '../../global-styles';
@@ -19,7 +19,7 @@ export default function App() {
   return (
     <div>
       <Switch>
-        <Route exact path="/" component={ListVedios} />
+        <Route exact path="/" component={ListVideos} />
         <Route component={NotFoundPage} />
       </Switch>
       <GlobalStyle />
