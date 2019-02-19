@@ -6,8 +6,8 @@ import { getDataApi} from './api';
 export function* getData() {
   try {  
     const response = yield call(getDataApi);
-    if (response) {
-      yield put(setDataAction(response));
+    if (response && response.data) {
+      yield put(setDataAction(response.data));
     }
   } catch (error) {
     console.error(error)
