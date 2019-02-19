@@ -9,7 +9,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
@@ -17,9 +16,7 @@ import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 import makeSelectVideoDetail from './selectors';
 import reducer from './reducer';
-  import saga from './saga';
-import messages from './messages';
-// import ReactPlayer from 'react-player';
+import saga from './saga';
 import ReactHLS from 'react-hls';
 
 /* eslint-disable react/prefer-stateless-function */
@@ -37,9 +34,7 @@ export class VideoDetail extends React.Component {
   componentDidMount(){
     if(this.props.location && this.props.location.state){
       const {state} = this.props.location;
-      this.setState(state, ()=>{
-        // console.log(this.state);
-      } );
+      this.setState(state);
     }
   }
 
@@ -50,10 +45,14 @@ export class VideoDetail extends React.Component {
           <title>{this.state.title}</title>
           <meta name="description" content={this.state.description} />
         </Helmet>
+          
+           <Link to="/" > Go Back </Link> 
 
-           <Link to="/" /> 
-
-          <ReactHLS url={this.state.url}  />
+          <ReactHLS 
+            url={this.state.url}  
+            height={450}
+            width={650}
+          />
           <br />
           <h3> {this.state.title} </h3>
           <p> {this.state.description} </p>
