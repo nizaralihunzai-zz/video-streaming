@@ -78,6 +78,13 @@ export class ListVideos extends React.Component {
                   filterAll: true
             },
             {
+              Header: "Description",
+              accessor: "description",
+              filterMethod: (filter, rows) =>
+                    matchSorter(rows, filter.value, { keys: ["description"] }),
+                  filterAll: true
+            },
+            {
               Header: "Running Time",
               accessor: "runningTime",
               filterable:false,
