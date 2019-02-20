@@ -41,7 +41,8 @@ export class VideoDetail extends React.Component {
           <Link to="/" > 
             Go Back
           </Link> 
-          <hr/>
+          <hr />
+
           <ReactHLS 
             url={this.state.url}  
             height={450}
