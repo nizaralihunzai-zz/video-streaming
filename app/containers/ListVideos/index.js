@@ -45,7 +45,6 @@ export class ListVideos extends React.Component {
 
   renderTable = () => {
     const { videos_list } = this.props.listVideos;
-    // console.log(videos_list);
     return <ReactTable
     getTdProps={() => ({
       style: {
@@ -59,6 +58,7 @@ export class ListVideos extends React.Component {
           columns: [
             {
               Header: "Thumbnail",
+              filterable:false,
               Cell: row => (
                   <img src={row.original.thumbUrl} style={{width:'50px', height:'50px'}} />
               )
@@ -80,27 +80,23 @@ export class ListVideos extends React.Component {
             {
               Header: "Running Time",
               accessor: "runningTime",
+              filterable:false,
               Cell: row => {
-
                 function pad(num) {
                   return ("0"+num).slice(-2);
                 }
-                //function hhmmss(secs) {
-                  let secs = row.original.runningTime;
-                  var minutes = Math.floor(secs / 60);
-                  secs = secs%60;
-                  var hours = Math.floor(minutes/60)
-                  minutes = minutes%60;
-                  return `${pad(hours)}:${pad(minutes)}:${pad(secs)}`;
-                  // return pad(hours)+":"+pad(minutes)+":"+pad(secs); for old browsers
-                //}
+                let secs = row.original.runningTime;
+                var minutes = Math.floor(secs / 60);
+                secs = secs%60;
+                var hours = Math.floor(minutes/60)
+                minutes = minutes%60;
+                return `${pad(hours)}:${pad(minutes)}:${pad(secs)}`;
               }
-              // filterMethod: (filter, rows) =>
-                 //    matchSorter(rows, filter.value, { keys: ["runningTime"] }),
-                 // filterAll: true
             },
             {
               Header: "Play",
+              accessor: "play",              
+              filterable:false,              
               Cell: row => (
                   <div>
                       <Link to={{
@@ -132,7 +128,6 @@ export class ListVideos extends React.Component {
   render() {
     return (
       <div>
-        <h2> Videos List </h2>
         {this.renderTable()}
       </div>
     );

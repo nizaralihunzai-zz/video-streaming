@@ -20,6 +20,7 @@ const GlobalStyle = createGlobalStyle`
     min-height: 100%;
     min-width: 100%;
     padding: 30px;
+    padding-top: 80px;
   }
 
   p,

@@ -6,17 +6,9 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import { createStructuredSelector } from 'reselect';
-import { compose } from 'redux';
 
-import injectSaga from 'utils/injectSaga';
-import injectReducer from 'utils/injectReducer';
-import makeSelectVideoDetail from './selectors';
-import reducer from './reducer';
-import saga from './saga';
 import ReactHLS from 'react-hls';
 
 /* eslint-disable react/prefer-stateless-function */
@@ -46,8 +38,10 @@ export class VideoDetail extends React.Component {
           <meta name="description" content={this.state.description} />
         </Helmet>
           
-           <Link to="/" > Go Back </Link> 
-
+          <Link to="/" > 
+            Go Back
+          </Link> 
+          <hr/>
           <ReactHLS 
             url={this.state.url}  
             height={450}
@@ -66,26 +60,4 @@ VideoDetail.propTypes = {
   dispatch: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = createStructuredSelector({
-  videoDetail: makeSelectVideoDetail(),
-});
-
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch,
-  };
-}
-
-const withConnect = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-);
-
-const withReducer = injectReducer({ key: 'videoDetail', reducer });
-const withSaga = injectSaga({ key: 'videoDetail', saga });
-
-export default compose(
-  withReducer,
-  withSaga,
-  withConnect,
-)(VideoDetail);
+export default VideoDetail;
